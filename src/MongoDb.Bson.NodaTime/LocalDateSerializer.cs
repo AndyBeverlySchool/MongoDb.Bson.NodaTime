@@ -17,12 +17,12 @@ namespace MongoDb.Bson.NodaTime
                 case BsonType.Array:
                     context.Reader.ReadStartArray();
                     var calendarId = context.Reader.ReadString();
-                    var localDate = ParseDatePattern(context.Reader.ReadString());
+                    var localDate = LocalDatePattern.IsoPattern.CheckedParse(context.Reader.ReadString());
                     context.Reader.ReadEndArray();
 
                     return localDate.WithCalendar(CalendarSystem.ForId(calendarId));
                 case BsonType.String:
-                    return ParseDatePattern(context.Reader.ReadString());
+                    return LocalDatePattern.IsoPattern.CheckedParse(context.Reader.ReadString());
                 default:
                     throw new NotSupportedException($"Cannot convert a {type} to a LocalDate.");
             }
@@ -30,28 +30,19 @@ namespace MongoDb.Bson.NodaTime
 
         public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, LocalDate value)
         {
+            var pattern = LocalDatePattern.IsoPattern;
+
             if (value.Calendar != CalendarSystem.Iso)
             {
                 context.Writer.WriteStartArray();
                 context.Writer.WriteString(value.Calendar.Id);
-                context.Writer.WriteString(LocalDatePattern.IsoPattern.Format(value));
+                context.Writer.WriteString(pattern.Format(value));
                 context.Writer.WriteEndArray();
             }
             else
             {
-                context.Writer.WriteString(LocalDatePattern.IsoPattern.Format(value));
+                context.Writer.WriteString(pattern.Format(value));
             }
-        }
-
-        private static LocalDate ParseDatePattern(string datePattern)
-        {
-            var localDate = LocalDatePattern.IsoPattern.Parse(datePattern);
-            if (!localDate.Success)
-            {
-                throw localDate.Exception;
-            }
-
-            return localDate.Value;
         }
     }
 }
