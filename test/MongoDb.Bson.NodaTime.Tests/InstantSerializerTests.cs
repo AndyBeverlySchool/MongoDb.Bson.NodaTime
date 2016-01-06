@@ -19,7 +19,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { Instant = instant };
-            obj.ToTestJson().Should().Contain("'Instant' : NumberLong('14200704010000000')");
+            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01Z'");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
             obj.Instant.Should().Be(instant);
@@ -30,7 +30,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { InstantNullable = instant };
-            obj.ToTestJson().Should().Contain("'InstantNullable' : NumberLong('14200704010000000')");
+            obj.ToTestJson().Should().Contain("'InstantNullable' : '2015-01-01T00:00:01Z'");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
             obj.InstantNullable.Should().Be(instant);
@@ -41,7 +41,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { Instant = instant };
-            obj.ToTestJson().Should().Contain("'Instant' : NumberLong('14200704010000000')");
+            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01Z'");
             obj.ToTestJson().Should().Contain("'InstantNullable' : null");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
@@ -52,14 +52,10 @@ namespace MongoDb.Bson.NodaTime.Tests
         [Fact]
         public void CanConvertEitherStringOrInt64()
         {
-            var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
+            var instant = Instant.FromUtc(2015, 1, 1, 1, 0, 1);
 
-            var doc = new BsonDocument(new BsonElement("Instant", new BsonString("14200704010000000")));
+            var doc = new BsonDocument(new BsonElement("Instant", "2015-01-01T01:00:01Z"));
             var obj = BsonSerializer.Deserialize<Test>(doc);
-            obj.Instant.Should().Be(instant);
-
-            doc = new BsonDocument(new BsonElement("Instant", new BsonInt64(14200704010000000)));
-            obj = BsonSerializer.Deserialize<Test>(doc);
             obj.Instant.Should().Be(instant);
         }
 
