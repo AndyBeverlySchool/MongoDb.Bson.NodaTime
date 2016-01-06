@@ -4,8 +4,8 @@
   "description": "BsonSerializers for NodaTime types.",
   "authors": [ "Greg Lincoln" ],
   "tags": [ "nodatime", "bson", "mongodb", "mongo" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "projectUrl": "https://github.com/AndyBeverlySchool/MongoDb.Bson.NodaTime/",
+  "licenseUrl": "https://raw.githubusercontent.com/AndyBeverlySchool/MongoDb.Bson.NodaTime/master/LICENSE.txt",
   "frameworks": {
     "dnx451": { }
   },
