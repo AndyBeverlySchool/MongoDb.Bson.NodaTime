@@ -1,1 +1,11 @@
 version: 1.0.{build}
+install:
+- cmd: dnvm install -r clr 1.0.0-rc1-update1
+before_build:
+- cmd: dnu restore
+build:
+  publish_nuget: true
+  publish_nuget_symbols: true
+  verbosity: minimal
+test_script:
+- cmd: dnx -p test\MongoDb.Bson.NodaTime.Tests test
