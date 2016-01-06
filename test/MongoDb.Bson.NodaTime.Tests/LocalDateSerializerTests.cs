@@ -25,13 +25,13 @@ namespace MongoDb.Bson.NodaTime.Tests
         }
 
         [Fact]
-        public void CanRoundTripWithAlternativeCalendar()
+        public void ConvertsToIsoCalendarWhenSerializing()
         {
             var obj = new Test { LocalDate = new LocalDate(2015, 1, 1).WithCalendar(CalendarSystem.GetPersianCalendar()) };
-            obj.ToTestJson().Should().Contain("'LocalDate' : ['Persian', '1393-10-11']");
+            obj.ToTestJson().Should().Contain("'LocalDate' : '2015-01-01'");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.LocalDate.Should().Be(obj.LocalDate);
+            obj.LocalDate.Should().Be(obj.LocalDate.WithCalendar(CalendarSystem.Iso));
         }
 
         [Fact]
