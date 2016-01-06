@@ -24,6 +24,14 @@ namespace MongoDb.Bson.NodaTime
             {
                 case BsonType.String:
                     return this.valueConverter(this.pattern.CheckedParse(context.Reader.ReadString()));
+                case BsonType.Null:
+                    if (typeof(TValue).IsValueType)
+                    {
+                        throw new InvalidOperationException($"{typeof(TValue).Name} is a value type, but the BsonValue is null.");
+                    }
+
+                    context.Reader.ReadNull();
+                    return default(TValue);
                 default:
                     throw new NotSupportedException($"Cannot convert a {type} to a {typeof(TValue).Name}.");
             }
