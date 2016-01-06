@@ -9,13 +9,6 @@ namespace MongoDb.Bson.NodaTime.Tests
 {
     public class InstantSerializerTests
     {
-        internal class Test
-        {
-            public Instant Instant { get; set; }
-
-            public Instant? InstantNullable { get; set; }
-        }
-
         static InstantSerializerTests()
         {
             BsonSerializer.RegisterSerializer(new InstantSerializer());
@@ -78,6 +71,19 @@ namespace MongoDb.Bson.NodaTime.Tests
 
             doc = new BsonDocument(new BsonElement("Instant", new BsonInt32(1)));
             Assert.Throws<FormatException>(() => BsonSerializer.Deserialize<Test>(doc));
+        }
+
+        [Fact]
+        public void CanParseNullable()
+        {
+            BsonSerializer.Deserialize<Test>(new BsonDocument(new BsonElement("InstantNullable", BsonNull.Value))).InstantNullable.Should().BeNull();
+        }
+
+        private class Test
+        {
+            public Instant Instant { get; set; }
+
+            public Instant? InstantNullable { get; set; }
         }
     }
 }
