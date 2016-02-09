@@ -6,12 +6,12 @@ using NodaTime.Text;
 
 namespace MongoDb.Bson.NodaTime
 {
-    public class PatternSerializerBase<TValue> : SerializerBase<TValue>
+    public abstract class PatternSerializer<TValue> : SerializerBase<TValue>
     {
         private readonly IPattern<TValue> pattern;
         private readonly Func<TValue, TValue> valueConverter;
 
-        protected PatternSerializerBase(IPattern<TValue> pattern, Func<TValue, TValue> valueConverter = null)
+        protected PatternSerializer(IPattern<TValue> pattern, Func<TValue, TValue> valueConverter = null)
         {
             this.pattern = pattern;
             this.valueConverter = valueConverter ?? (v => v);

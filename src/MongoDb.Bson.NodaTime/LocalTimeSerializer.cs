@@ -3,7 +3,7 @@ using NodaTime.Text;
 
 namespace MongoDb.Bson.NodaTime
 {
-    public class LocalTimeSerializer : PatternSerializerBase<LocalTime>
+    public class LocalTimeSerializer : PatternSerializer<LocalTime>
     {
         public LocalTimeSerializer() : base(LocalTimePattern.ExtendedIsoPattern)
         {}

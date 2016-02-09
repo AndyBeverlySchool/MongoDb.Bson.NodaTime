@@ -1,4 +1,5 @@
 version: 1.0.{build}
+configuration: Release
 install:
 - cmd: dnvm install -r clr 1.0.0-rc1-update1
 before_build:
@@ -9,3 +10,6 @@ build:
   verbosity: minimal
 test_script:
 - cmd: dnx -p test\MongoDb.Bson.NodaTime.Tests test
+artifacts:
+- path: artifacts\bin\MongoDb.Bson.NodaTime\Release\*.nupkg
+  name: nuget
