@@ -19,7 +19,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { Instant = instant };
-            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01Z'");
+            obj.ToTestJson().Should().Contain("'Instant' : ISODate('2015-01-01T00:00:01Z')");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
             obj.Instant.Should().Be(instant);
@@ -30,7 +30,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { InstantNullable = instant };
-            obj.ToTestJson().Should().Contain("'InstantNullable' : '2015-01-01T00:00:01Z'");
+            obj.ToTestJson().Should().Contain("'InstantNullable' : ISODate('2015-01-01T00:00:01Z')");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
             obj.InstantNullable.Should().Be(instant);
@@ -41,7 +41,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { Instant = instant };
-            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01Z'");
+            obj.ToTestJson().Should().Contain("'Instant' : ISODate('2015-01-01T00:00:01Z')");
             obj.ToTestJson().Should().Contain("'InstantNullable' : null");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
@@ -50,7 +50,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         }
 
         [Fact]
-        public void CanConvertEitherStringOrInt64()
+        public void SupportsOldFormat()
         {
             var instant = Instant.FromUtc(2015, 1, 1, 1, 0, 1);
 
@@ -66,6 +66,13 @@ namespace MongoDb.Bson.NodaTime.Tests
             Assert.Throws<FormatException>(() => BsonSerializer.Deserialize<Test>(doc));
 
             doc = new BsonDocument(new BsonElement("Instant", new BsonInt32(1)));
+            Assert.Throws<FormatException>(() => BsonSerializer.Deserialize<Test>(doc));
+        }
+
+        [Fact]
+        public void ThrowsForNullWhenNotNullable()
+        {
+            var doc = new BsonDocument(new BsonElement("Instant", BsonNull.Value));
             Assert.Throws<FormatException>(() => BsonSerializer.Deserialize<Test>(doc));
         }
 
