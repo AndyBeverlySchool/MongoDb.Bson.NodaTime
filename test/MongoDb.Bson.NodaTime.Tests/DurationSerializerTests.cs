@@ -34,12 +34,13 @@ namespace MongoDb.Bson.NodaTime.Tests
         [Fact]
         public void CanParseNullable()
         {
-            BsonSerializer.Deserialize<Test>(new BsonDocument(new BsonElement("Duration", BsonNull.Value))).Duration.Should().BeNull();
+            BsonSerializer.Deserialize<Test>(new BsonDocument(new BsonElement("DurationNullable", BsonNull.Value))).DurationNullable.Should().BeNull();
         }
 
         private class Test
         {
             public Duration Duration { get; set; }
+            public Duration? DurationNullable { get; set; }
         }
     }
 }
