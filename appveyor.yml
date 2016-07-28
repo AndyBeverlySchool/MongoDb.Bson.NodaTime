@@ -4,7 +4,7 @@ configuration: Release
 before_build:
 - dotnet restore
 build_script:
-- dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION% --version-suffix %APPVEYOR_BUILD_NUMBER%
+- dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION%
 test_script:
 - dotnet test -f net451 test/MongoDb.Bson.NodaTime.Tests
 artifacts:
