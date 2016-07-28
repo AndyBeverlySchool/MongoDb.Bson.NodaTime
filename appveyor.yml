@@ -6,7 +6,7 @@ init:
 before_build:
 - dotnet restore
 build_script:
-- dotnet pack "src\MongoDb.Bson.NodaTime\" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+- dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 test_script:
 - dotnet test -f net451 test/MongoDb.Bson.NodaTime.Tests
 artifacts:
