@@ -1,15 +1,14 @@
 version: 1.1.1-{build}
 os: Visual Studio 2015
 configuration: Release
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
 before_build:
-- cmd: dotnet --info
-- cmd: dotnet restore
-build:
-  publish_nuget: true
-  publish_nuget_symbols: true
-  verbosity: minimal
+- dotnet restore
+build_script:
+- dotnet pack "src\MongoDb.Bson.NodaTime\" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 test_script:
-- cmd: dotnet -p test\MongoDb.Bson.NodaTime.Tests test
+- dotnet test -f net451 test/MongoDb.Bson.NodaTime.Tests
 artifacts:
 - path: artifacts\bin\MongoDb.Bson.NodaTime\Release\*.nupkg
   name: nuget
