@@ -1,23 +1,23 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "MongoDb.Bson.NodaTime.Tests Library",
   "authors": [ "Greg Lincoln" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
   "dependencies": {
-    "xunit": "2.2.0-*",
-    "MongoDb.Bson.NodaTime": "1.1.1-*",
+    "xunit": "2.2.0-beta4-build3444",
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+    "MongoDb.Bson.NodaTime": "1.2.0",
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "FluentAssertions": "4.1.0",
     "NodaTime.Testing": "1.3.2",
-    "MongoDB.Driver": "2.2.4"
+    "MongoDB.Driver": "2.3.0"
   },
   "testRunner": "xunit",
   "frameworks": {
-    "net451": {
+    "netcoreapp1.0": {
+      "imports": "portable-net40+sl5+win8+wp8+wpa81",
       "dependencies": {
-        "Microsoft.NETCore.Platforms": "1.0.1"
+        "Microsoft.NETCore.Platforms": "1.0.1",
+        "System.Xml.XmlSerializer" : "4.0.11"
      }
     }
   }

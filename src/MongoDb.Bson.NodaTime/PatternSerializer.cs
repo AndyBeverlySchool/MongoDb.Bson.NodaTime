@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using NodaTime.Text;
+using System.Reflection;
 
 namespace MongoDb.Bson.NodaTime
 {
@@ -25,7 +26,7 @@ namespace MongoDb.Bson.NodaTime
                 case BsonType.String:
                     return this.valueConverter(this.pattern.CheckedParse(context.Reader.ReadString()));
                 case BsonType.Null:
-                    if (typeof(TValue).IsValueType)
+                    if (typeof(TValue).GetTypeInfo().IsValueType)
                     {
                         throw new InvalidOperationException($"{typeof(TValue).Name} is a value type, but the BsonValue is null.");
                     }
