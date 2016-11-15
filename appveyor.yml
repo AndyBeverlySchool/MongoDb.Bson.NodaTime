@@ -1,4 +1,4 @@
-version: 1.1.1-{build}
+version: 1.2.0-{build}
 os: Visual Studio 2015
 configuration: Release
 before_build:
@@ -6,7 +6,7 @@ before_build:
 build_script:
 - dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION%
 test_script:
-- dotnet test -f net451 test/MongoDb.Bson.NodaTime.Tests
+- dotnet test test/MongoDb.Bson.NodaTime.Tests
 artifacts:
 - path: src\MongoDb.Bson.NodaTime\bin\Release\*.nupkg
   name: nuget
