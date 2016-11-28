@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.2.0",
+  "version": "1.2.1",
   "title": "MongoDb.Bson.NodaTime",
   "description": "BsonSerializers for NodaTime types.",
   "authors": [ "Greg Lincoln" ],
@@ -15,7 +15,8 @@
   "frameworks": {
     "netstandard1.5": { 
       "imports": "portable-net40+sl5+win8+wp8+wpa81" 
-    }
+    },
+    "net45": {}
   },
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
