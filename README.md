@@ -26,7 +26,7 @@ BsonSerializer.RegisterSerializer(new InstantSerializer());
 
 #Implemented NodaTime Types
 
-(as of v1.1.1)
+(as of v1.3.0)
 * Instant
 * LocalDate
 * LocalTime
@@ -34,8 +34,9 @@ BsonSerializer.RegisterSerializer(new InstantSerializer());
 * OffsetDateTime
 * Period
 * Duration
-* 
+* ZonedDateTime
+
 # Dependencies
 
-* NodaTime v1.3.2
+* NodaTime v1.3.2 for 1.3.0, v2.2.0 therafter
 * MongoDB.Driver v2.2.4
