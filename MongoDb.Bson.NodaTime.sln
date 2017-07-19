@@ -1,20 +1,19 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26114.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F821097A-FB21-434E-8E49-42B004B939C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6A0091A-A0CD-4773-9300-C77E46C89AF7}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		global.json = global.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MongoDb.Bson.NodaTime", "src\MongoDb.Bson.NodaTime\MongoDb.Bson.NodaTime.xproj", "{C48D14DC-61D4-4F5E-B8B4-0E7A7E3855ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDb.Bson.NodaTime", "src\MongoDb.Bson.NodaTime\MongoDb.Bson.NodaTime.csproj", "{C48D14DC-61D4-4F5E-B8B4-0E7A7E3855ED}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MongoDb.Bson.NodaTime.Tests", "test\MongoDb.Bson.NodaTime.Tests\MongoDb.Bson.NodaTime.Tests.xproj", "{FBABBF70-BE8F-4732-9B1A-D147A98D458A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDb.Bson.NodaTime.Tests", "test\MongoDb.Bson.NodaTime.Tests\MongoDb.Bson.NodaTime.Tests.csproj", "{FBABBF70-BE8F-4732-9B1A-D147A98D458A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{09B7B090-81C3-4CF5-A403-6D22AFA8906F}"
 EndProject

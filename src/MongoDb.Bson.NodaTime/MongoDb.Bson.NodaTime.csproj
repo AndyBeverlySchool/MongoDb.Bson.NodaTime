@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>BsonSerializers for NodaTime types.</Description>
+    <AssemblyTitle>MongoDb.Bson.NodaTime</AssemblyTitle>
+    <VersionPrefix>1.2.1</VersionPrefix>
+    <Authors>Greg Lincoln</Authors>
+    <TargetFrameworks>netstandard1.5;net45</TargetFrameworks>
+    <AssemblyName>MongoDb.Bson.NodaTime</AssemblyName>
+    <PackageId>MongoDb.Bson.NodaTime</PackageId>
+    <PackageTags>nodatime;bson;mongodb;mongo</PackageTags>
+    <PackageProjectUrl>https://github.com/AndyBeverlySchool/MongoDb.Bson.NodaTime/</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/AndyBeverlySchool/MongoDb.Bson.NodaTime/master/LICENSE.txt</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AndyBeverlySchool/MongoDb.Bson.NodaTime/</RepositoryUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.5' ">$(PackageTargetFallback);portable-net40+sl5+win8+wp8+wpa81</PackageTargetFallback>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.3.0" />
+    <PackageReference Include="NodaTime" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>
