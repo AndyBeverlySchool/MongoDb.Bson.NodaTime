@@ -28,7 +28,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         [Fact]
         public void ConvertsToIsoCalendarWhenSerializing()
         {
-            var obj = new Test { OffsetDateTime = new LocalDateTime(2015, 1, 2, 3, 4, 5).WithOffset(Offset.FromHours(1)).WithCalendar(CalendarSystem.GetPersianCalendar()) };
+            var obj = new Test { OffsetDateTime = new LocalDateTime(2015, 1, 2, 3, 4, 5).WithOffset(Offset.FromHours(1)).WithCalendar(CalendarSystem.PersianSimple) };
             obj.ToTestJson().Should().Contain("'OffsetDateTime' : '2015-01-02T03:04:05+01'");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
