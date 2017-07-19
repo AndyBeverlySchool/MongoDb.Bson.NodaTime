@@ -5,7 +5,7 @@ namespace MongoDb.Bson.NodaTime
 {
     public class OffsetDateTimeSerializer : PatternSerializer<OffsetDateTime>
     {
-        public OffsetDateTimeSerializer() : base(OffsetDateTimePattern.ExtendedIsoPattern, d => d.WithCalendar(CalendarSystem.Iso))
+        public OffsetDateTimeSerializer() : base(OffsetDateTimePattern.ExtendedIso, d => d.WithCalendar(CalendarSystem.Iso))
         { }
     }
 }

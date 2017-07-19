@@ -15,9 +15,9 @@ namespace MongoDb.Bson.NodaTime
             switch (type)
             {
                 case BsonType.DateTime:
-                    return Instant.FromMillisecondsSinceUnixEpoch(context.Reader.ReadDateTime());
+                    return Instant.FromUnixTimeMilliseconds(context.Reader.ReadDateTime());
                 case BsonType.String:
-                    return InstantPattern.ExtendedIsoPattern.CheckedParse(context.Reader.ReadString());
+                    return InstantPattern.ExtendedIso.CheckedParse(context.Reader.ReadString());
                 case BsonType.Null:
                     throw new InvalidOperationException("Instant is a value type, but the BsonValue is null.");
                 default:
@@ -27,7 +27,7 @@ namespace MongoDb.Bson.NodaTime
 
         public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Instant value)
         {
-            context.Writer.WriteDateTime(value.Ticks / NodaConstants.TicksPerMillisecond);
+            context.Writer.WriteDateTime(value.ToUnixTimeTicks() / NodaConstants.TicksPerMillisecond);
         }
     }
 }
