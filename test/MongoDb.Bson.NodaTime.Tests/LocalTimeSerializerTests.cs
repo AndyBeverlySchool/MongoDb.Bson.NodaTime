@@ -20,8 +20,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { LocalTime = new LocalTime(13, 25, 1) };
             obj.ToTestJson().Should().Contain("'LocalTime' : '13:25:01'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.LocalTime.Should().Be(obj.LocalTime);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.LocalTime.Should().Be(obj.LocalTime);
         }
 
         [Fact]

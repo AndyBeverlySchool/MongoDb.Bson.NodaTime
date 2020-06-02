@@ -20,8 +20,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { LocalDateTime = new LocalDateTime(2015, 1, 2, 3, 4, 5) };
             obj.ToTestJson().Should().Contain("'LocalDateTime' : '2015-01-02T03:04:05'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.LocalDateTime.Should().Be(obj.LocalDateTime);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.LocalDateTime.Should().Be(obj.LocalDateTime);
         }
 
 
@@ -31,8 +31,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { LocalDateTime = new LocalDateTime(2015, 1, 2, 3, 4, 5).WithCalendar(CalendarSystem.PersianSimple) };
             obj.ToTestJson().Should().Contain("'LocalDateTime' : '2015-01-02T03:04:05'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.LocalDateTime.Should().Be(obj.LocalDateTime.WithCalendar(CalendarSystem.Iso));
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.LocalDateTime.Should().Be(obj.LocalDateTime.WithCalendar(CalendarSystem.Iso));
         }
 
         [Fact]
