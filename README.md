@@ -35,6 +35,7 @@ BsonSerializer.RegisterSerializer(new InstantSerializer());
 * Period
 * Duration
 * ZonedDateTime
+* Offset
 
 # Dependencies
 
