@@ -24,9 +24,8 @@ BsonSerializer.RegisterSerializer(new InstantSerializer());
 
 ```
 
-#Implemented NodaTime Types
+# Implemented NodaTime Types (as of v2.1.0)
 
-(as of v1.3.0)
 * Instant
 * LocalDate
 * LocalTime
