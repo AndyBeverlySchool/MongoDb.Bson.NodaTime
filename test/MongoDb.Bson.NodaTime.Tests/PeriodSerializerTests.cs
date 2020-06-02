@@ -20,8 +20,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { Period = Period.FromSeconds(34) };
             obj.ToTestJson().Should().Contain("'Period' : 'PT34S'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.Period.Should().Be(obj.Period);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.Period.Should().Be(obj.Period);
         }
 
 

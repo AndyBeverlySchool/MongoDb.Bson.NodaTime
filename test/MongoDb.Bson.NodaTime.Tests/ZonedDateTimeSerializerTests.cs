@@ -22,10 +22,10 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { ZonedDateTime = dateTime };
             obj.ToTestJson().Should().Contain("'ZonedDateTime' : '2015-01-01T22:04:05 America/New_York (-05)'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.ZonedDateTime.Should().Be(obj.ZonedDateTime);
-            obj.ZonedDateTime.Should().Be(dateTime);
-            obj.ZonedDateTime.Zone.Should().Be(easternTimezone);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.ZonedDateTime.Should().Be(obj.ZonedDateTime);
+            deserialized.ZonedDateTime.Should().Be(dateTime);
+            deserialized.ZonedDateTime.Zone.Should().Be(easternTimezone);
         }
 
         [Fact]
@@ -35,10 +35,10 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { ZonedDateTime = dateTime };
             obj.ToTestJson().Should().Contain("'ZonedDateTime' : '2015-01-02T03:04:05 UTC (+00)'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.ZonedDateTime.Should().Be(obj.ZonedDateTime);
-            obj.ZonedDateTime.Should().Be(dateTime);
-            obj.ZonedDateTime.Zone.Should().Be(DateTimeZone.Utc);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.ZonedDateTime.Should().Be(obj.ZonedDateTime);
+            deserialized.ZonedDateTime.Should().Be(dateTime);
+            deserialized.ZonedDateTime.Zone.Should().Be(DateTimeZone.Utc);
         }
 
         [Fact]

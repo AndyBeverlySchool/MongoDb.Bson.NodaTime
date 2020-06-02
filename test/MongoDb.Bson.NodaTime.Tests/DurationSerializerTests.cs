@@ -20,8 +20,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { Duration = Duration.FromSeconds(34) };
             obj.ToTestJson().Should().Contain("'Duration' : '0:00:00:34'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.Duration.Should().Be(obj.Duration);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.Duration.Should().Be(obj.Duration);
         }
 
 

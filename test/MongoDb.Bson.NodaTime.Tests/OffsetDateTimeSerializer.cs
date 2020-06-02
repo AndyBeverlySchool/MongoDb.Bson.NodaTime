@@ -20,8 +20,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { OffsetDateTime = new LocalDateTime(2015, 1, 2, 3, 4, 5).WithOffset(Offset.FromHours(1)) };
             obj.ToTestJson().Should().Contain("'OffsetDateTime' : '2015-01-02T03:04:05+01'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.OffsetDateTime.Should().Be(obj.OffsetDateTime);
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.OffsetDateTime.Should().Be(obj.OffsetDateTime);
         }
 
 
@@ -31,8 +31,8 @@ namespace MongoDb.Bson.NodaTime.Tests
             var obj = new Test { OffsetDateTime = new LocalDateTime(2015, 1, 2, 3, 4, 5).WithOffset(Offset.FromHours(1)).WithCalendar(CalendarSystem.PersianSimple) };
             obj.ToTestJson().Should().Contain("'OffsetDateTime' : '2015-01-02T03:04:05+01'");
 
-            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
-            obj.OffsetDateTime.Should().Be(obj.OffsetDateTime.WithCalendar(CalendarSystem.Iso));
+            var deserialized = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            deserialized.OffsetDateTime.Should().Be(obj.OffsetDateTime.WithCalendar(CalendarSystem.Iso));
         }
 
         [Fact]
