@@ -3,9 +3,9 @@
   <PropertyGroup>
     <Description>BsonSerializers for NodaTime types.</Description>
     <AssemblyTitle>MongoDb.Bson.NodaTime</AssemblyTitle>
-    <VersionPrefix>2.1.0</VersionPrefix>
+    <VersionPrefix>3.0.0</VersionPrefix>
     <Authors>Greg Lincoln</Authors>
-    <TargetFrameworks>netstandard1.5;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>MongoDb.Bson.NodaTime</AssemblyName>
     <PackageId>MongoDb.Bson.NodaTime</PackageId>
     <PackageTags>nodatime;bson;mongodb;mongo</PackageTags>
@@ -17,13 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.3.0" />
-    <PackageReference Include="NodaTime" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
+    <PackageReference Include="NodaTime" Version="3.0.3" />
   </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
 </Project>
