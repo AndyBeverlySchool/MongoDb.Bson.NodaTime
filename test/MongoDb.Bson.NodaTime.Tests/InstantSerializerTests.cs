@@ -15,11 +15,22 @@ namespace MongoDb.Bson.NodaTime.Tests
         }
 
         [Fact]
+        public void CanConvertTicksValid()
+        {
+            var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1).PlusTicks(1_234_567);
+            var obj = new Test { Instant = instant };
+            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01.1234567Z'");
+
+            obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
+            obj.Instant.Should().Be(instant);
+        }
+
+        [Fact]
         public void CanConvertValid()
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { Instant = instant };
-            obj.ToTestJson().Should().Contain("'Instant' : ISODate('2015-01-01T00:00:01Z')");
+            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01Z'");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
             obj.Instant.Should().Be(instant);
@@ -30,7 +41,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { InstantNullable = instant };
-            obj.ToTestJson().Should().Contain("'InstantNullable' : ISODate('2015-01-01T00:00:01Z')");
+            obj.ToTestJson().Should().Contain("'InstantNullable' : '2015-01-01T00:00:01Z'");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
             obj.InstantNullable.Should().Be(instant);
@@ -41,7 +52,7 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             var instant = Instant.FromUtc(2015, 1, 1, 0, 0, 1);
             var obj = new Test { Instant = instant };
-            obj.ToTestJson().Should().Contain("'Instant' : ISODate('2015-01-01T00:00:01Z')");
+            obj.ToTestJson().Should().Contain("'Instant' : '2015-01-01T00:00:01Z'");
             obj.ToTestJson().Should().Contain("'InstantNullable' : null");
 
             obj = BsonSerializer.Deserialize<Test>(obj.ToBson());
