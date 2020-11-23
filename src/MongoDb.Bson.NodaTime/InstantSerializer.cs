@@ -1,16 +1,21 @@
 ﻿using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
 using NodaTime;
 using NodaTime.Text;
 
 namespace MongoDb.Bson.NodaTime
 {
-    public class InstantSerializer : SerializerBase<Instant>
+    public class InstantSerializer : PatternSerializer<Instant>
     {
+        public InstantSerializer() : base(InstantPattern.ExtendedIso)
+        { }
+
+        public static bool UseExtendedIsoStringPattern { get; set; } = false;
+
         public override Instant Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
         {
+            if (UseExtendedIsoStringPattern) return base.Deserialize(context, args);
             var type = context.Reader.GetCurrentBsonType();
             switch (type)
             {
@@ -27,7 +32,14 @@ namespace MongoDb.Bson.NodaTime
 
         public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Instant value)
         {
-            context.Writer.WriteDateTime(value.ToUnixTimeTicks() / NodaConstants.TicksPerMillisecond);
+            if (UseExtendedIsoStringPattern)
+            {
+                base.Serialize(context, args, value);
+            }
+            else
+            {
+                context.Writer.WriteDateTime(value.ToUnixTimeTicks() / NodaConstants.TicksPerMillisecond);
+            }
         }
     }
 }
