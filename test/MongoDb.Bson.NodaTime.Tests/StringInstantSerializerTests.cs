@@ -9,6 +9,15 @@ namespace MongoDb.Bson.NodaTime.Tests
 {
     public class StringInstantSerializerTests
     {
+        static StringInstantSerializerTests()
+        {
+            try
+            {
+                BsonSerializer.RegisterSerializer(new InstantSerializer());
+            }
+            catch(BsonSerializationException) {}
+        }
+
         public StringInstantSerializerTests()
         {
             InstantSerializer.UseExtendedIsoStringPattern = true;

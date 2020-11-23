@@ -11,7 +11,11 @@ namespace MongoDb.Bson.NodaTime.Tests
     {
         static InstantSerializerTests()
         {
-            BsonSerializer.RegisterSerializer(new InstantSerializer());
+            try
+            {
+                BsonSerializer.RegisterSerializer(new InstantSerializer());
+            }
+            catch (BsonSerializationException) { }
         }
         
         public InstantSerializerTests()

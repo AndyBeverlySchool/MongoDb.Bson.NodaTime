@@ -47,5 +47,5 @@ This will likely break certain types of aggregations, as well as greater than/le
 
 # Dependencies
 
-* NodaTime v1.3.2 for 1.3.0, v2.2.0 therafter
+* NodaTime v1.3.2 for 1.3.0, v2.2.0 thereafter
 * MongoDB.Driver v2.2.4
