@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
@@ -24,7 +24,8 @@ namespace MongoDb.Bson.NodaTime
             switch (type)
             {
                 case BsonType.String:
-                    return this.valueConverter(this.pattern.CheckedParse(context.Reader.ReadString()));
+                    return valueConverter(pattern.CheckedParse(context.Reader.ReadString()));
+                
                 case BsonType.Null:
                     if (typeof(TValue).GetTypeInfo().IsValueType)
                     {
@@ -32,7 +33,8 @@ namespace MongoDb.Bson.NodaTime
                     }
 
                     context.Reader.ReadNull();
-                    return default(TValue);
+                    return default;
+                
                 default:
                     throw new NotSupportedException($"Cannot convert a {type} to a {typeof(TValue).Name}.");
             }
@@ -40,7 +42,10 @@ namespace MongoDb.Bson.NodaTime
 
         public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, TValue value)
         {
-            context.Writer.WriteString(this.pattern.Format(this.valueConverter(value)));
+            if(value == null)
+                context.Writer.WriteNull();
+            else
+                context.Writer.WriteString(pattern.Format(valueConverter(value)));
         }
     }
 }
