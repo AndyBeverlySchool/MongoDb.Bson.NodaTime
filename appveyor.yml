@@ -1,5 +1,5 @@
-version: 2.1.0-{build}
-os: Visual Studio 2015
+version: 3.0.0-{build}
+os: Visual Studio 2019
 configuration: Release
 before_build:
 - dotnet restore
@@ -7,7 +7,7 @@ build_script:
 - dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION%
 test_script:
 - dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f netcoreapp1.1
-- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f net451
+- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f net452
 artifacts:
 - path: src\MongoDb.Bson.NodaTime\bin\Release\*.nupkg
   name: nuget
