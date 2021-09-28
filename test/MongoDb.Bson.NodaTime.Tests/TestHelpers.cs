@@ -1,4 +1,7 @@
 ﻿using MongoDB.Bson;
+using Xunit;
+
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace MongoDb.Bson.NodaTime.Tests
 {

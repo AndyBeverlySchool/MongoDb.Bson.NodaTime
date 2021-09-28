@@ -1,13 +1,11 @@
 version: 3.0.0-{build}
-os: Visual Studio 2019
-configuration: Release
+os: Ubuntu2004
 before_build:
-- dotnet restore
+- dotnet restore --use-lock-file
 build_script:
-- dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION%
+- dotnet pack src/MongoDb.Bson.NodaTime/ -c Release
 test_script:
-- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f netcoreapp1.1
-- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f net452
+- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj
 artifacts:
 - path: src\MongoDb.Bson.NodaTime\bin\Release\*.nupkg
   name: nuget
