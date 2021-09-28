@@ -1,10 +1,9 @@
 version: 3.0.0-{build}
 os: Ubuntu2004
-configuration: Release
 before_build:
 - dotnet restore --use-lock-file
 build_script:
-- dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION%
+- dotnet pack src/MongoDb.Bson.NodaTime/ -c Release
 test_script:
 - dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj
 artifacts:
