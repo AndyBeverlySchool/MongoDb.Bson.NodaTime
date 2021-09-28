@@ -6,8 +6,7 @@ before_build:
 build_script:
 - dotnet pack src/MongoDb.Bson.NodaTime/ -c %CONFIGURATION%
 test_script:
-- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f netcoreapp1.1
-- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj -f net452
+- dotnet test test/MongoDb.Bson.NodaTime.Tests/MongoDb.Bson.NodaTime.Tests.csproj
 artifacts:
 - path: src\MongoDb.Bson.NodaTime\bin\Release\*.nupkg
   name: nuget

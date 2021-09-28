@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>MongoDb.Bson.NodaTime.Tests Library</Description>
     <Authors>Greg Lincoln</Authors>
-    <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <AssemblyName>MongoDb.Bson.NodaTime.Tests</AssemblyName>
     <PackageId>MongoDb.Bson.NodaTime.Tests</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>

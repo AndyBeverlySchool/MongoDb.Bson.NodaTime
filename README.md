@@ -3,6 +3,10 @@
 # MongoDb.Bson.NodaTime
 BsonSerializers for NodaTime types, for use with the MongoDB C# driver.
 
+# Supported NodaTime versions
+
+The major version of MongoDb.Bson.NodaTime is in sync with the major version of NodaTime.
+
 # Installation
 Grab the latest package from Nuget. Yay, Nuget!
 
@@ -23,7 +27,6 @@ individually like this:
 BsonSerializer.RegisterSerializer(new InstantSerializer());
 
 ```
-
 # Special case for Instant, as of v3.0.0
 
 By default, Instants are  serialized to be compatible with Mongo's underling Date representation, which is limited to ms 
@@ -44,8 +47,3 @@ This will likely break certain types of aggregations, as well as greater than/le
 * Duration
 * ZonedDateTime
 * Offset
-
-# Dependencies
-
-* NodaTime v1.3.2 for 1.3.0, v2.2.0 thereafter
-* MongoDB.Driver v2.2.4
