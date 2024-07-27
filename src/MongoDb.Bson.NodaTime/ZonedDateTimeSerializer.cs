@@ -6,7 +6,9 @@ namespace MongoDb.Bson.NodaTime
     public class ZonedDateTimeSerializer : PatternSerializer<ZonedDateTime>
     {
         private static readonly IPattern<ZonedDateTime> Pattern = ZonedDateTimePattern.CreateWithInvariantCulture("G", DateTimeZoneProviders.Tzdb);
-        public ZonedDateTimeSerializer() : base(Pattern)
-        { }
+
+        public ZonedDateTimeSerializer(IPattern<ZonedDateTime> pattern) : base(pattern)
+        {
+        }
     }
 }

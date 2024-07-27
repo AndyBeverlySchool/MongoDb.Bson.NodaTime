@@ -12,7 +12,8 @@ namespace MongoDb.Bson.NodaTime.Tests
         private readonly static DateTimeZone easternTimezone = DateTimeZoneProviders.Tzdb.GetZoneOrNull("America/New_York");
         static ZonedDateTimeSerializerTests()
         {
-            BsonSerializer.RegisterSerializer(new ZonedDateTimeSerializer());
+            var options = new NodaTimeSerializerOptions();
+            BsonSerializer.RegisterSerializer(new ZonedDateTimeSerializer(options.ZonedDateTimePattern));
         }
 
         [Fact]

@@ -11,7 +11,8 @@ namespace MongoDb.Bson.NodaTime.Tests
     {
         static DurationSerializerTests()
         {
-            BsonSerializer.RegisterSerializer(new DurationSerializer());
+            var options = new NodaTimeSerializerOptions();
+            BsonSerializer.RegisterSerializer(new DurationSerializer(options.DurationPattern));
         }
 
         [Fact]

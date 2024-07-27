@@ -5,7 +5,9 @@ namespace MongoDb.Bson.NodaTime
 {
     public class LocalDateSerializer : PatternSerializer<LocalDate>
     {
-        public LocalDateSerializer() : base(LocalDatePattern.Iso, d => d.WithCalendar(CalendarSystem.Iso))
-        {}
+        public LocalDateSerializer(LocalDatePattern pattern, CalendarSystem calendarSystem)
+            : base(pattern, d => d.WithCalendar(calendarSystem))
+        {
+        }
     }
 }

@@ -5,7 +5,8 @@ namespace MongoDb.Bson.NodaTime
 {
     public class PeriodSerializer : PatternSerializer<Period>
     {
-        public PeriodSerializer() : base(PeriodPattern.NormalizingIso)
-        {}
+        public PeriodSerializer(PeriodPattern pattern) : base(pattern)
+        {
+        }
     }
 }

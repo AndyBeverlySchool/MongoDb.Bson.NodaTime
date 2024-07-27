@@ -11,7 +11,8 @@ namespace MongoDb.Bson.NodaTime.Tests
     {
         static PeriodSerializerTests()
         {
-            BsonSerializer.RegisterSerializer(new PeriodSerializer());
+            var options = new NodaTimeSerializerOptions();
+            BsonSerializer.RegisterSerializer(new PeriodSerializer(options.PeriodPattern));
         }
 
         [Fact]

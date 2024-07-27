@@ -8,8 +8,9 @@ namespace MongoDb.Bson.NodaTime
 {
     public class InstantSerializer : PatternSerializer<Instant>
     {
-        public InstantSerializer() : base(InstantPattern.ExtendedIso)
-        { }
+        public InstantSerializer(InstantPattern pattern) : base(pattern)
+        {
+        }
 
         public static bool UseExtendedIsoStringPattern { get; set; } = false;
 
