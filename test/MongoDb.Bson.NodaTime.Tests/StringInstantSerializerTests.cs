@@ -13,7 +13,8 @@ namespace MongoDb.Bson.NodaTime.Tests
         {
             try
             {
-                BsonSerializer.RegisterSerializer(new InstantSerializer());
+                var options = new NodaTimeSerializerOptions();
+                BsonSerializer.RegisterSerializer(new InstantSerializer(options.InstantPattern));
             }
             catch(BsonSerializationException) {}
         }

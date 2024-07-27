@@ -5,7 +5,8 @@ namespace MongoDb.Bson.NodaTime
 {
     public class LocalTimeSerializer : PatternSerializer<LocalTime>
     {
-        public LocalTimeSerializer() : base(LocalTimePattern.ExtendedIso)
-        {}
+        public LocalTimeSerializer(LocalTimePattern pattern) : base(pattern)
+        {
+        }
     }
 }

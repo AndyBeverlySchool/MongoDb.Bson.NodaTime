@@ -11,7 +11,8 @@ namespace MongoDb.Bson.NodaTime.Tests
     {
         static LocalDateSerializerTests()
         {
-            BsonSerializer.RegisterSerializer(new LocalDateSerializer());
+            var options = new NodaTimeSerializerOptions();
+            BsonSerializer.RegisterSerializer(new LocalDateSerializer(options.LocalDatePattern, options.CalendarSystem));
         }
 
         [Fact]

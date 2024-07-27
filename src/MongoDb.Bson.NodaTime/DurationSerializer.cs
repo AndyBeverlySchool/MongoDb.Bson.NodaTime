@@ -5,7 +5,8 @@ namespace MongoDb.Bson.NodaTime
 {
     public class DurationSerializer : PatternSerializer<Duration>
     {
-        public DurationSerializer() : base(DurationPattern.Roundtrip)
-        {}
+        public DurationSerializer(DurationPattern pattern) : base(pattern)
+        {
+        }
     }
 }
