@@ -174,9 +174,10 @@
       },
       "MongoDB.Bson": {
         "type": "Transitive",
-        "resolved": "2.13.1",
-        "contentHash": "B/AI2we7YwfFuNcXr4jlCnVI5dJp+g8vkyj3Shi/bOpGhZQaxW4jK/NiiTwYvqxaMOe4MtVR+6Zlk4D2zalC7A==",
+        "resolved": "2.28.0",
+        "contentHash": "yiWN3scVV0lYpFXn1CL4PB0BK3KrHFC44qw72+/cBIDS9+r9MQYfxFMxM+pAvnSssAZtQ7ZabCu7z3UOXqKy4w==",
         "dependencies": {
+          "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
         }
       },
@@ -262,8 +263,8 @@
       },
       "NodaTime": {
         "type": "Transitive",
-        "resolved": "3.0.6",
-        "contentHash": "Jt+qjGV7YW3HoYAT4/MTKGI5+mw6hS+mqOr33hJB/NSacdO0QK2tnSTcmqtv7S3kgl7hYUfN/qaYW70D+o9tpQ==",
+        "resolved": "3.1.12",
+        "contentHash": "nDcUbG0jiEXmV8cOz7V8GnUKlmPJjqZm/R+E2JNnUSdlMoaQ19xSU8GXFLReGs/Nt8xdBfA8XfO77xVboWO1Vg==",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.7.1"
         }
@@ -790,6 +791,11 @@
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
+      },
+      "System.Memory": {
+        "type": "Transitive",
+        "resolved": "4.5.5",
+        "contentHash": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw=="
       },
       "System.Net.Http": {
         "type": "Transitive",
@@ -1496,8 +1502,8 @@
       "mongodb.bson.nodatime": {
         "type": "Project",
         "dependencies": {
-          "MongoDB.Bson": "2.13.1",
-          "NodaTime": "3.0.6"
+          "MongoDB.Bson": "[2.28.0, )",
+          "NodaTime": "[3.1.12, )"
         }
       }
     },
