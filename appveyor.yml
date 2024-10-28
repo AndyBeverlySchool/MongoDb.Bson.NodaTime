@@ -1,5 +1,5 @@
 version: 3.1.0-{build}
-os: Ubuntu2004
+os: Ubuntu2204
 before_build:
 - dotnet restore --use-lock-file
 build_script:
